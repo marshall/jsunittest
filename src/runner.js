@@ -1,20 +1,14 @@
 JsUnitTest.Unit.Runner = function(testcases) {
   var argumentOptions = arguments[1] || {};
   var options = this.options = {};
-  options.testLog = ('testLog' in argumentOptions) ? argumentOptions.testLog : 'testlog';
+  //options.testLog = ('testLog' in argumentOptions) ? argumentOptions.testLog : 'testlog';
+  options.table = ('table' in argumentOptions) ? argumentOptions.table : null;
+  options.tab = ('tab' in argumentOptions) ? argumentOptions.tab : null;
   options.resultsURL = this.queryParams.resultsURL;
-  options.testLog = JsUnitTest.$(options.testLog);
   
   this.tests = this.getTests(testcases);
   this.currentTest = 0;
-  this.logger = new JsUnitTest.Unit.Logger(options.testLog);
-  
-  var self = this;
-  JsUnitTest.Event.addEvent(window, "load", function() {
-    setTimeout(function() {
-      self.runTests();
-    }, 0.1);
-  });
+  this.logger = new JsUnitTest.Unit.TiLogger(options.table, options.tab);
 };
 
 JsUnitTest.Unit.Runner.prototype.queryParams = JsUnitTest.toQueryParams();

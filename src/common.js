@@ -47,7 +47,8 @@ var JsUnitTest = {
       return elements;
     }
     if (typeof element == "string") {
-      element = document.getElementById(element);
+      //element = document.getElementById(element);
+      return element;
     }
     return element;
   },
@@ -208,7 +209,7 @@ var JsUnitTest = {
   },
   
   toQueryParams: function(query, separator) {
-    var query = query || window.location.search;
+    var query = query || '';
     var match = query.replace(/^\s+/, '').replace(/\s+$/, '').match(/([^?#]*)(#.*)?$/);
     if (!match) {return { };}
 

@@ -10,4 +10,4 @@ JsUnitTest.Version = '<%= APP_VERSION %>';
 <%= include 'assertions.js' %>
 <%= include 'runner.js', 'test_case.js' %>
 
-Test = JsUnitTest
+var Test = JsUnitTest;
